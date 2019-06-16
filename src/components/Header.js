@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import BuildIcon from "@material-ui/icons/Build";
 
 class Header extends Component {
     render(){
@@ -19,6 +20,7 @@ class Header extends Component {
                         <Typography variant="h6" color="inherit" >
                             Roof Contract Pricing Tool
                         </Typography>
+                        <BuildIcon />
                     </Toolbar>
                 </AppBar>
 
