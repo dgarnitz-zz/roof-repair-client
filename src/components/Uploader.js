@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import ImageUploader from 'react-images-upload';
+
+{/* This uses the react-image-upload component, created by Jake Hartnell
+ https://github.com/jakehartnell/react-images-upload#readme */}
  
 class Uploader extends Component {
  
@@ -23,6 +26,7 @@ class Uploader extends Component {
                 onChange={this.onDrop}
                 imgExtension={['.jpg', '.gif', '.png', '.gif']}
                 maxFileSize={5242880}
+                label="Max file size: 5mb, formats accepted: jpg, gif, png"
             />
         );
     }
