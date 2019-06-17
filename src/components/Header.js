@@ -8,9 +8,9 @@ class Header extends Component {
     render(){
         const layout = {
             width: 'auto',
-            marginLeft: 15,
-            marginRight: 15,
-            marginTop: 15
+            marginLeft: 16,
+            marginRight: 16,
+            marginTop: 16
         };
 
         return (
