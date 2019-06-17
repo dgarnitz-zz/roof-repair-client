@@ -19,9 +19,27 @@ class Main extends Component {
         });
     }
 
+    /* Need error handling here so nothing happens if the user clicks this button before uploading */
     getPrice(){
         console.log(this.state.pictures);
+        fetch("http://localhost:5000/", {
+            method: 'POST',
+            body: this.state.pictures
+        }).then(
+            response => response.json()
+          ).then(
+            (success) => {
+                console.log(success) // Handle the success response object
+                this.setState({price: success.price}) 
+                console.log(this.state.price)
+            } 
+          ).catch(
+            error => console.log(error)
+          );
+
+        console.log("resetting state")
         this.setState({pictures: [] })
+        console.log(this.state.pictures)
     }
 
     render(){
