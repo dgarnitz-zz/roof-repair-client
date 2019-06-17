@@ -7,6 +7,7 @@ class Main extends Component {
             <div>
                 <Header />
                 <p>This is a test</p>
+                <input type='file' id='multi' />
             </div>
             
         );
