@@ -16,23 +16,33 @@ import Grid from '@material-ui/core/Grid';
 class Uploader extends Component {
     render() {
         return (
-            <Grid container className={useStyles.root} spacing={2}>
-                <Grid item xs={12}>
-                    <ImageUploader
-                        withIcon={true}
-                        buttonText='Choose image'
-                        onChange={this.props.onDrop}
-                        imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                        maxFileSize={5242880}
-                        label="Max file size: 5mb, formats accepted: jpg, gif, png"
-                    />
-                </Grid>
-                <Grid item xs={12}>
-                    <Fab variant="extended" onClick = {this.props.getPrice}>
-                        Get price!
-                    </ Fab>
-                </Grid>
-            </Grid>
+            // <Grid container className={useStyles.root} spacing={2}>
+            //     <Grid item xs={12}>
+            //         <ImageUploader
+            //             withIcon={true}
+            //             buttonText='Choose image'
+            //             onChange={this.props.onDrop}
+            //             imgExtension={['.jpg', '.gif', '.png', '.gif']}
+            //             maxFileSize={5242880}
+            //             label="Max file size: 5mb, formats accepted: jpg, gif, png"
+            //             name="myImage"
+            //         />
+            //     </Grid>
+            //     <Grid item xs={12}>
+            //         <Fab variant="extended" onClick={this.props.getPrice}>
+            //             Get price!
+            //         </ Fab>
+            //     </Grid>
+            // </Grid>
+
+            <div>
+                <form encType="multipart/form-data" onSubmit={this.props.getPrice} ref="myForm">
+                    <label>Select File </label><br></br>
+                    <input name="upl" id="input-1" type="file" name="myImage" onChange={this.props.onDrop}/><br></br>
+                    <input type="submit" value="submit" />
+                </form>
+            </div>
+
         );
     }
 }

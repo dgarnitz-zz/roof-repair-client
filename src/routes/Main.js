@@ -13,18 +13,29 @@ class Main extends Component {
          this.getPrice = this.getPrice.bind(this);
     }
 
-    onDrop(picture) {
+    onDrop = event => {
+        console.log("uploading image", event.target.files[0])
         this.setState({
-            pictures: this.state.pictures.concat(picture),
+            pictures: this.state.pictures.concat(event.target.files[0]),
         });
+        this.getPrice(event, event.target.files[0]);
     }
 
     /* Need error handling here so nothing happens if the user clicks this button before uploading */
-    getPrice(){
-        console.log(this.state.pictures);
-        fetch("http://localhost:5000/", {
+    getPrice = (event, file) =>{
+        var formData = new FormData(this.refs.myForm);
+        formData.append("myImage", file);
+        event.preventDefault();
+
+        // console.log(this.state.pictures);
+        fetch("http://localhost:5000/upload/photo", {
             method: 'POST',
-            body: this.state.pictures
+            // headers: {
+            //     "Content-Type": "multipart/form-data",
+            //     "Accept": "application/json",
+            //     "type": "formData"
+            // },
+            body: formData
         }).then(
             response => response.json()
           ).then(
