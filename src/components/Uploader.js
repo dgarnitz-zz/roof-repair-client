@@ -1,48 +1,42 @@
 import React, { Component } from 'react';
-import ImageUploader from 'react-images-upload';
-import Fab from '@material-ui/core/Fab';
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Input from '@material-ui/core/Input';
 
 /* This uses the react-image-upload component, created by Jake Hartnell
  https://github.com/jakehartnell/react-images-upload#readme */
 
- const useStyles = makeStyles(theme => ({
-    root: {
-      flexGrow: 1,
-    }
-  }));
+ const layout = {
+     padding: '16px',
+     margin: '40px'
+ };
  
 class Uploader extends Component {
     render() {
         return (
-            // <Grid container className={useStyles.root} spacing={2}>
-            //     <Grid item xs={12}>
-            //         <ImageUploader
-            //             withIcon={true}
-            //             buttonText='Choose image'
-            //             onChange={this.props.onDrop}
-            //             imgExtension={['.jpg', '.gif', '.png', '.gif']}
-            //             maxFileSize={5242880}
-            //             label="Max file size: 5mb, formats accepted: jpg, gif, png"
-            //             name="myImage"
-            //         />
-            //     </Grid>
-            //     <Grid item xs={12}>
-            //         <Fab variant="extended" onClick={this.props.getPrice}>
-            //             Get price!
-            //         </ Fab>
-            //     </Grid>
-            // </Grid>
-
-            <div>
-                <form encType="multipart/form-data" onSubmit={this.props.getPrice} ref="myForm">
-                    <label>Select File </label><br></br>
-                    <input name="upl" id="input-1" type="file" name="myImage" onChange={this.props.onDrop}/><br></br>
-                    <input type="submit" value="submit" />
-                </form>
-            </div>
-
+            <Grid
+            container
+            spacing={10}
+            direction="column"
+            justify="space-evenly"
+            alignItems="center"
+            >
+                <div style={layout}>
+                    <form encType="multipart/form-data" ref="myForm">
+                        <Grid item xs={12}>
+                            <Typography variant="h6" paragraph={true}>
+                                Please select a picture
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Input type="file" name="myImage" onChange={this.props.onDrop} accept="image/*"/>
+                        </Grid>
+                        {/* <Grid item xs={12}>
+                            <input type="file" name="myImage" onChange={this.props.onDrop} accept="image/*" />
+                        </Grid> */}
+                    </form>
+                </div>
+            </Grid>
         );
     }
 }

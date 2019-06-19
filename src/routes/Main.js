@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import Spinner from '../components/Spinner';
 import Uploader from '../components/Uploader';
 import Price from '../components/Price';
 
@@ -21,20 +20,13 @@ class Main extends Component {
         this.getPrice(event, event.target.files[0]);
     }
 
-    /* Need error handling here so nothing happens if the user clicks this button before uploading */
     getPrice = (event, file) =>{
         var formData = new FormData(this.refs.myForm);
         formData.append("myImage", file);
         event.preventDefault();
 
-        // console.log(this.state.pictures);
         fetch("http://localhost:5000/upload/photo", {
             method: 'POST',
-            // headers: {
-            //     "Content-Type": "multipart/form-data",
-            //     "Accept": "application/json",
-            //     "type": "formData"
-            // },
             body: formData
         }).then(
             response => response.json()
@@ -65,7 +57,7 @@ class Main extends Component {
         return (
             <div>
                 <Header />
-                <Uploader onDrop={this.onDrop} getPrice={this.getPrice} />
+                <Uploader onDrop={this.onDrop} />
                 {price}
             </div>
             
