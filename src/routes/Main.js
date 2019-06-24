@@ -14,35 +14,26 @@ class Main extends Component {
 
     onDrop = event => {
         console.log("uploading image", event.target.files[0])
-        this.setState({
-            pictures: this.state.pictures.concat(event.target.files[0]),
-        });
         this.getPrice(event, event.target.files[0]);
     }
+
+    
 
     getPrice = (event, file) =>{
         var formData = new FormData(this.refs.myForm);
         formData.append("myImage", file);
         event.preventDefault();
 
-        fetch("http://localhost:5000/upload/photo", {
-            method: 'POST',
-            body: formData
-        }).then(
-            response => response.json()
-          ).then(
-            (success) => {
-                console.log(success) // Handle the success response object
-                this.setState({price: success.price}) 
-                console.log(this.state.price)
-            } 
-          ).catch(
-            error => console.log(error)
-          );
+            (async () => {
+                let response = await fetch("http://localhost:5000/upload/photo", {
+                                method: 'POST',
+                                body: formData
+                            });
+                let data = await response.json();
+                this.setState({price: data.price}); 
+                console.log(this.state.price);
+            })();
 
-        console.log("resetting state")
-        this.setState({pictures: [] })
-        console.log(this.state.pictures)
     }
 
     render(){
@@ -59,8 +50,7 @@ class Main extends Component {
                 <Header />
                 <Uploader onDrop={this.onDrop} />
                 {price}
-            </div>
-            
+            </div> 
         );
     }
 }
