@@ -17,19 +17,25 @@ import MenuItem from '@material-ui/core/MenuItem';
  const margin = {
    marginTop: '24px'  
  };
-
- {/* https://codesandbox.io/s/ty0o2 
-    Use this to wire up the form elements */}
  
 class Uploader extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            location: '',
+            season: ''
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
+    
+    handleChange = (event) => {
+        console.log(event)
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+    
     render() {
-
-        function handleChange(event) {
-            setValues(oldValues => ({
-              ...oldValues,
-              [event.target.name]: event.target.value,
-            }));
-          }
 
         return (
             <Grid
@@ -42,19 +48,25 @@ class Uploader extends Component {
                 <div style={layout}>
                     <form encType="multipart/form-data" ref="myForm">
                         <Grid item xs={12}>
-                            <InputLabel htlmFor="location" style={margin}>County</InputLabel>
+                            <InputLabel style={margin}>County</InputLabel>
                             <Select 
-                                inputProps={{id: 'location'}} 
                                 style={margin}
-                                
+                                value={this.state.location}
+                                onChange={this.handleChange}
+                                name="location"
                             >
                                     <MenuItem value={"Fife"}>Fife</MenuItem>
                                     <MenuItem value={"Tayside"}>Tayside</MenuItem>
                             </Select>
                         </Grid> 
                         <Grid item xs={12}>
-                            <InputLabel htlmFor="season" style={margin}>Time of Year</InputLabel>
-                            <Select inputProps={{id: 'season'}} style={margin}>
+                            <InputLabel style={margin}>Time of Year</InputLabel>
+                            <Select 
+                                style={margin} 
+                                value={this.state.season}
+                                onChange={this.handleChange}
+                                name="season"
+                            >
                                 <MenuItem value={"winter"}>winter</MenuItem>
                                 <MenuItem value={"autumn"}>autumn</MenuItem>
                                 <MenuItem value={"summer"}>summer</MenuItem>
