@@ -23,6 +23,14 @@ import MenuItem from '@material-ui/core/MenuItem';
  
 class Uploader extends Component {
     render() {
+
+        function handleChange(event) {
+            setValues(oldValues => ({
+              ...oldValues,
+              [event.target.name]: event.target.value,
+            }));
+          }
+
         return (
             <Grid
             container
@@ -35,7 +43,11 @@ class Uploader extends Component {
                     <form encType="multipart/form-data" ref="myForm">
                         <Grid item xs={12}>
                             <InputLabel htlmFor="location" style={margin}>County</InputLabel>
-                            <Select inputProps={{id: 'location'}} style={margin}>
+                            <Select 
+                                inputProps={{id: 'location'}} 
+                                style={margin}
+                                
+                            >
                                     <MenuItem value={"Fife"}>Fife</MenuItem>
                                     <MenuItem value={"Tayside"}>Tayside</MenuItem>
                             </Select>
