@@ -16,16 +16,17 @@ class Main extends Component {
     onDrop = event => {
         console.log("uploading image", event.target.files[0])
         const currentUploader = this.Uploader1.current;
-        console.log("sending form data", currentUploader.state)
-        this.getPrice(event, event.target.files[0]);
+        console.log("sending form data", currentUploader.state.location, currentUploader.state.season)
+        this.getPrice(event, event.target.files[0], currentUploader.state);
     }
 
     
 
-    getPrice = (event, file) =>{
+    getPrice = (event, file, uploaderState) =>{
         var formData = new FormData(this.refs.myForm);
         formData.append("myImage", file);
-        // formData.append("")
+        formData.append("season", uploaderState.season)
+        formData.append("location", uploaderState.location)
         event.preventDefault();
 
             (async () => {
