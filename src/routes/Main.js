@@ -10,10 +10,13 @@ class Main extends Component {
                         price: 0 }; 
          this.onDrop = this.onDrop.bind(this);
          this.getPrice = this.getPrice.bind(this);
+         this.Uploader1 = React.createRef();
     }
 
     onDrop = event => {
         console.log("uploading image", event.target.files[0])
+        const currentUploader = this.Uploader1.current;
+        console.log("sending form data", currentUploader.state)
         this.getPrice(event, event.target.files[0]);
     }
 
@@ -22,6 +25,7 @@ class Main extends Component {
     getPrice = (event, file) =>{
         var formData = new FormData(this.refs.myForm);
         formData.append("myImage", file);
+        // formData.append("")
         event.preventDefault();
 
             (async () => {
@@ -48,7 +52,7 @@ class Main extends Component {
         return (
             <div>
                 <Header />
-                <Uploader onDrop={this.onDrop} />
+                <Uploader onDrop={this.onDrop} ref={this.Uploader1} />
                 {price}
             </div> 
         );
