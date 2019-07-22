@@ -1,6 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
+import EstimateEvaluator from './EstimateEvaluator';
 
 export default function Price (props){
     const layout = {
@@ -15,7 +16,11 @@ export default function Price (props){
     return (
         <div style={layout}>
             <Typography variant="h6" style={margin}>
-                The price per square meter to refurbish this roof is £{props.price}
+                The bid price per square meter to replace this roof is £{props.price}
+            </Typography>
+            <EstimateEvaluator />
+            <Typography variant="h6" style={margin}>
+                Or:
             </Typography>
             <Button color="primary" variant = "contained" href="/">
                 Price another contract
