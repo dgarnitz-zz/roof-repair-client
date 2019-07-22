@@ -7,9 +7,10 @@ class Main extends Component {
     constructor(props) {
         super(props);
          this.state = { pictures: [],
-                        price: 0 }; 
+                        price: 20 }; 
          this.onDrop = this.onDrop.bind(this);
          this.getPrice = this.getPrice.bind(this);
+         this.reinforceLearning = this.reinforceLearning.bind(this);
          this.Uploader1 = React.createRef();
     }
 
@@ -41,13 +42,27 @@ class Main extends Component {
 
     }
 
+    reinforceLearning = event => {
+        console.log(event);
+
+        (async () => {
+            let response = await  fetch("http://localhost:5000/reinforcementLearning", {
+                    method: 'GET',
+                    body: event.target.name
+            });
+            const data = await response.status;
+            console.log(data)
+        })();
+
+    }
+
     render(){
 
         var price;
         if (this.state.price === 0){
             price = null;
         } else {
-            price = <Price price={this.state.price} />;
+            price = <Price price={this.state.price} reinforceLearning={this.reinforceLearning} />;
         }
 
         return (

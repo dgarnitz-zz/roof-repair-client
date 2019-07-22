@@ -18,7 +18,7 @@ export default function Price (props){
             <Typography variant="h6" style={margin}>
                 The bid price per square meter to replace this roof is £{props.price}
             </Typography>
-            <EstimateEvaluator />
+            <EstimateEvaluator reinforceLearning={props.reinforceLearning} />
             <Typography variant="h6" style={margin}>
                 Or:
             </Typography>

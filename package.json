@@ -40,7 +40,6 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^1.6.0",
     "@typescript-eslint/typescript-estree": "^1.6.0",
-    "riteway": "^6.0.3",
     "typescript": "^3.5.2"
   }
 }

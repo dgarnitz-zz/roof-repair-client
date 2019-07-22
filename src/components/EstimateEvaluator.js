@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-export default function EstimateEvaluator (){
+export default function EstimateEvaluator (props){
     const layout = {
         width: 'auto',
         marginTop: 24,
@@ -20,6 +20,10 @@ export default function EstimateEvaluator (){
         marginBottom: 16
     };
 
+    function handleClick() {
+        props.reinforceLearning()
+    }
+
     return (
         <div style={layout}>
             <Typography variant="h6" style={margin}>
@@ -33,13 +37,28 @@ export default function EstimateEvaluator (){
             alignItems="center"
             >
                 <Grid item xs={9}>
-                    <Button color="primary" variant = "contained" href="/" style={spacing}>
+                    <Button 
+                    name="high"
+                    color="primary" 
+                    variant = "contained" 
+                    onClick={props.reinforceLearning}
+                    style={spacing}>
                         Too High
                     </Button>
-                    <Button color="primary" variant = "contained" href="/" style={spacing}>
+                    <Button 
+                    name="accurate"
+                    color="primary" 
+                    variant = "contained" 
+                    onClick={props.reinforceLearning}
+                    style={spacing}>
                         Accurate
                     </Button>
-                    <Button color="primary" variant = "contained" href="/" style={spacing}>
+                    <Button 
+                    name="low"
+                    color="primary" 
+                    variant = "contained" 
+                    onClick={props.reinforceLearning}
+                    style={spacing}>
                         Too Low
                     </Button>
                 </Grid>
