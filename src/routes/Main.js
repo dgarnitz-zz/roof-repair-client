@@ -7,7 +7,7 @@ class Main extends Component {
     constructor(props) {
         super(props);
          this.state = { pictures: [],
-                        price: 20 }; 
+                        price: 0 }; 
          this.onDrop = this.onDrop.bind(this);
          this.getPrice = this.getPrice.bind(this);
          this.reinforceLearning = this.reinforceLearning.bind(this);
@@ -42,18 +42,16 @@ class Main extends Component {
 
     }
 
-    reinforceLearning = event => {
-        console.log(event);
+    reinforceLearning = (event) => {
 
         (async () => {
-            let response = await  fetch("http://localhost:5000/reinforcementLearning", {
-                    method: 'GET',
-                    body: event.target.name
+            let response = await  fetch(`http://localhost:5000/reinforcementLearning?estimate=${event.target.name}`, {
+                    method: 'GET'
             });
             const data = await response.status;
-            console.log(data)
+            (data === 200) ? alert("Response sent. Model will be updated") : alert("Response failed to send")
+            window.location.reload();
         })();
-
     }
 
     render(){

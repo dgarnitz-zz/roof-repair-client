@@ -1,7 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
+import Input from '@material-ui/core/Input'
 
 export default function EstimateEvaluator (props){
     const layout = {
@@ -20,10 +21,6 @@ export default function EstimateEvaluator (props){
         marginBottom: 16
     };
 
-    function handleClick() {
-        props.reinforceLearning()
-    }
-
     return (
         <div style={layout}>
             <Typography variant="h6" style={margin}>
@@ -36,32 +33,39 @@ export default function EstimateEvaluator (props){
             justify="space-evenly"
             alignItems="center"
             >
-                <Grid item xs={9}>
-                    <Button 
-                    name="high"
-                    color="primary" 
-                    variant = "contained" 
-                    onClick={props.reinforceLearning}
-                    style={spacing}>
-                        Too High
-                    </Button>
-                    <Button 
-                    name="accurate"
-                    color="primary" 
-                    variant = "contained" 
-                    onClick={props.reinforceLearning}
-                    style={spacing}>
-                        Accurate
-                    </Button>
-                    <Button 
-                    name="low"
-                    color="primary" 
-                    variant = "contained" 
-                    onClick={props.reinforceLearning}
-                    style={spacing}>
-                        Too Low
-                    </Button>
-                </Grid>
+                <form style={layout}>
+                    <Grid item xs={12}>
+                        <FormControl margin="dense">
+                            <Input
+                            type="button"
+                            value="Too high" 
+                            name="high"
+                            onClick={props.reinforceLearning}
+                            style={spacing}
+                            />
+                        </FormControl>
+                        <FormControl margin="dense">
+                            <Input
+                            type="button" 
+                            name="accurate"
+                            value="Accurate" 
+                            onClick={props.reinforceLearning} 
+                            style={spacing}
+                            />
+                        </FormControl>
+                        <FormControl margin="dense">
+                            <Input 
+                            type="button"
+                            value="Too low" 
+                            name="low"
+                            color="primary" 
+                            variant = "contained" 
+                            onClick={props.reinforceLearning}
+                            style={spacing}
+                            />
+                        </FormControl>
+                    </Grid>
+                </form>
             </Grid>
         </div>
     );
