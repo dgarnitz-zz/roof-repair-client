@@ -1,4 +1,4 @@
-This is the client component of the automated roof contract pricing system I have developed for mey MSc dissertation project. This system takes a picture of a roof as output as well as a location and outputs a price per square meter of replacing it. 
+This is the client component of the automated roof contract pricing system I have developed for my MSc dissertation project. This system takes a picture of a roof as output as well as a location and outputs a price per square meter of replacing it. 
 ----------------------------------------------------------------------------------------------------------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
